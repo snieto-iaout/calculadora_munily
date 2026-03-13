@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Calculadora de Ahorro — Munily</title>
+  <meta name="description"
+    content="Descubre cuánto puede ahorrarte Munily en tu conjunto residencial. Calculadora gratuita basada en análisis de cientos de propiedades." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="calculadora.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+     NAVEGACIÓN  (estilo munily.com — fondo blanco)
+     ════════════════════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+
+      <a href="https://munily.com" class="nav-logo" target="_blank" rel="noopener">
+        <img src="munily.png" alt="Munily" />
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="https://munily.com/casos-de-uso" target="_blank" rel="noopener">Casos de uso</a></li>
+        <li><a href="https://munily.com/productos" target="_blank" rel="noopener">Productos</a></li>
+        <li><a href="https://munily.com/comunidad" target="_blank" rel="noopener">Comunidad</a></li>
+      </ul>
+
+      <a href="https://munily.com/contactanos/" class="nav-cta" target="_blank" rel="noopener">
+        Solicitar demo
+      </a>
+
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════
+     HERO  (fondo oscuro navy — idéntico a munily.com)
+     ════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag fade-up">
+        🏢 Calculadora de ahorro
+      </div>
+
+      <h1 class="fade-up delay-1">
+        Descubre cuánto puede<br>
+        <em>ahorrar tu conjunto</em><br>
+        con Munily
+      </h1>
+
+      <p class="hero-sub fade-up delay-2">
+        Ingresa los datos de tu propiedad horizontal y calcula tu potencial de ahorro en segundos.
+        Basado en análisis de propiedades en toda Latinoamérica.
+      </p>
+
+      <div class="hero-stats fade-up delay-3">
+        <div class="hero-stat">
+          <span class="hero-stat-num">6.65%</span>
+          <span class="hero-stat-label">Ahorro promedio del presupuesto</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">85%</span>
+          <span class="hero-stat-label">Reducción en tiempo administrativo</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">840%</span>
+          <span class="hero-stat-label">ROI promedio primer año</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+     CALCULADORA
+     ════════════════════════════════════════════════════════ -->
+  <section class="calc-section">
+
+    <div class="calc-heading fade-up">
+      <span class="section-label">Herramienta gratuita</span>
+      <h2>Calcula tu ahorro personalizado</h2>
+      <p>Ajusta los parámetros de tu conjunto y los resultados se actualizan en tiempo real.</p>
+    </div>
+
+    <div class="calc-grid">
+
+      <!-- ── FORMULARIO ────────────────────────────── -->
+      <div class="card fade-up delay-1">
+
+        <div class="card-header">
+          <div class="card-icon">⚙️</div>
+          <div>
+            <div class="card-title">Datos de tu conjunto</div>
+            <div class="card-subtitle">Completa la información para calcular tu ahorro</div>
+          </div>
+        </div>
+
+        <!-- Moneda + Presupuesto -->
+        <div class="form-group">
+          <div class="form-label">
+            <span>Presupuesto mensual</span>
+            <span class="form-hint">en tu moneda local</span>
+          </div>
+          <div class="budget-wrap">
+            <div class="currency-sym">
+              <input type="text" id="currency" maxlength="4" value="$" title="Símbolo de moneda" />
+            </div>
+            <input type="number" id="budget" class="budget-num" min="1" value="40000000" placeholder="40,000,000" />
+          </div>
+          <div class="field-note">Escribe el símbolo de tu moneda local: $, €, S/, Q, Bs., etc.</div>
+        </div>
+
+        <!-- Número de unidades -->
+        <div class="form-group">
+          <div class="form-label">
+            <span>Número de unidades</span>
+            <span class="form-hint" id="units-display">100 uds.</span>
+          </div>
+          <div class="slider-track">
+            <input type="range" id="units" min="10" max="500" value="100" step="5" />
+            <div class="slider-labels">
+              <span>10</span>
+              <span>500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipo de propiedad -->
+        <div class="form-group">
+          <div class="form-label"><span>Tipo de propiedad</span></div>
+          <div class="select-wrap">
+            <select id="type">
+              <option value="edificio">Edificio residencial</option>
+              <option value="conjunto">Conjunto de casas</option>
+              <option value="mixto">Proyecto mixto</option>
+              <option value="oficinas">Edificio de oficinas</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Morosidad -->
+        <div class="form-group">
+          <div class="form-label">
+            <span>Tasa de morosidad actual</span>
+            <span class="form-hint" id="mora-display">8%</span>
+          </div>
+          <div class="slider-track">
+            <input type="range" id="mora" min="0" max="30" value="8" step="1" />
+            <div class="slider-labels">
+              <span>0%</span>
+              <span>30%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consumo de servicios -->
+        <div class="form-group">
+          <div class="form-label">
+            <span>¿Consumo elevado de servicios?</span>
+          </div>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" id="btn-no" onclick="setServicios(false)">
+              No, consumo normal
+            </button>
+            <button class="toggle-btn active" id="btn-si" onclick="setServicios(true)">
+              Sí, consumo alto
+            </button>
+          </div>
+        </div>
+
+        <!-- Cotización Munily (opcional) -->
+        <div class="form-group">
+          <div class="form-label">
+            <span>Cotización mensual Munily</span>
+            <span class="form-hint">opcional</span>
+          </div>
+          <input type="number" id="munily-cost" class="input-simple" min="0"
+            placeholder="Ingresa aquí si ya tienes cotización" />
+          <div class="field-note">
+            Si tienes una propuesta de Munily, ingrésala para ver tu ROI exacto.
+            Si la dejas en blanco usamos valores de referencia de mercado.
+          </div>
+        </div>
+
+      </div><!-- /card -->
+
+
+      <!-- ── RESULTADOS ─────────────────────────────── -->
+      <div class="results-col">
+
+        <!-- Ahorro principal -->
+        <div class="saving-hero fade-up delay-2">
+          <div class="saving-label">Ahorro mensual estimado</div>
+          <div class="saving-amount" id="res-mensual">—</div>
+          <div class="saving-pct" id="res-mensual-pct">calculando…</div>
+          <div class="saving-pills">
+            <div class="saving-pill">Anual: <strong id="res-anual">—</strong></div>
+            <div class="saving-pill">Por unidad/mes: <strong id="res-unidad">—</strong></div>
+          </div>
+        </div>
+
+        <!-- Grid de métricas -->
+        <div class="metrics-grid fade-up delay-3">
+
+          <div class="metric-card">
+            <div class="metric-label">% del presupuesto</div>
+            <div class="metric-value blue" id="res-pct">—</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Ahorro tiempo admin</div>
+            <div class="metric-value green">93%</div>
+          </div>
+
+          <div class="metric-card" id="metric-roi" style="display:none">
+            <div class="metric-label">ROI primer año</div>
+            <div class="metric-value green" id="res-roi">—</div>
+          </div>
+
+          <div class="metric-card" id="metric-payback" style="display:none">
+            <div class="metric-label">Recuperación inversión</div>
+            <div class="metric-value blue" id="res-payback">—</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Ahorro neto anual</div>
+            <div class="metric-value green" id="res-neto">—</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Horas admin ahorradas</div>
+            <div class="metric-value">~38.5 h/sem</div>
+          </div>
+
+        </div>
+
+        <!-- Botón descargar PDF -->
+        <button id="btn-pdf" onclick="generatePDF()" class="btn-pdf fade-up delay-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Descargar informe PDF
+        </button>
+
+      </div><!-- /results-col -->
+
+    </div><!-- /calc-grid -->
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+     DESGLOSE Y COSTOS  (sección fondo azul suave)
+     ════════════════════════════════════════════════════════ -->
+  <section class="bottom-section">
+    <div class="bottom-grid">
+
+      <!-- Desglose por categoría -->
+      <div class="breakdown-card fade-up">
+        <div class="breakdown-title">Desglose por categoría de ahorro</div>
+
+        <div class="b-item">
+          <div class="b-row">
+            <span class="b-name">
+              <span class="b-dot" style="background:#3D88E3"></span>
+              Administración y gestión
+            </span>
+            <span class="b-amt" id="b-admin">—</span>
+          </div>
+          <div class="b-bar">
+            <div class="b-fill" id="bar-admin" style="width:0%;background:#3D88E3"></div>
+          </div>
+        </div>
+
+        <div class="b-item">
+          <div class="b-row">
+            <span class="b-name">
+              <span class="b-dot" style="background:#0d9e6e"></span>
+              Reducción de morosidad
+            </span>
+            <span class="b-amt" id="b-mora">—</span>
+          </div>
+          <div class="b-bar">
+            <div class="b-fill" id="bar-mora" style="width:0%;background:#0d9e6e"></div>
+          </div>
+        </div>
+
+        <div class="b-item">
+          <div class="b-row">
+            <span class="b-name">
+              <span class="b-dot" style="background:#E8863B"></span>
+              Servicios públicos
+            </span>
+            <span class="b-amt" id="b-srv">—</span>
+          </div>
+          <div class="b-bar">
+            <div class="b-fill" id="bar-srv" style="width:0%;background:#E8863B"></div>
+          </div>
+        </div>
+
+        <div class="b-item">
+          <div class="b-row">
+            <span class="b-name">
+              <span class="b-dot" style="background:#8b5cf6"></span>
+              Mantenimiento preventivo
+            </span>
+            <span class="b-amt" id="b-mant">—</span>
+          </div>
+          <div class="b-bar">
+            <div class="b-fill" id="bar-mant" style="width:0%;background:#8b5cf6"></div>
+          </div>
+        </div>
+
+        <div class="b-item">
+          <div class="b-row">
+            <span class="b-name">
+              <span class="b-dot" style="background:#ec4899"></span>
+              Comunicación eficiente
+            </span>
+            <span class="b-amt" id="b-com">—</span>
+          </div>
+          <div class="b-bar">
+            <div class="b-fill" id="bar-com" style="width:0%;background:#ec4899"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Costos de referencia Munily -->
+      <div class="cost-card fade-up delay-1">
+        <div class="breakdown-title">Referencia de inversión Munily</div>
+
+        <div class="cost-row">
+          <span class="c-name">Rango de unidades</span>
+          <span class="c-val" id="cost-range">—</span>
+        </div>
+        <div class="cost-row">
+          <span class="c-name">Implementación (una sola vez)</span>
+          <span class="c-val" id="cost-impl">—</span>
+        </div>
+        <div class="cost-row">
+          <span class="c-name">Costo mensual Munily (ref.)</span>
+          <span class="c-val" id="cost-mensual-ref">—</span>
+        </div>
+        <div class="cost-row">
+          <span class="c-name">Costo anual Munily (ref.)</span>
+          <span class="c-val" id="cost-anual-ref">—</span>
+        </div>
+        <div class="cost-row">
+          <span class="c-name">Ahorro bruto anual estimado</span>
+          <span class="c-val" id="cost-bruto">—</span>
+        </div>
+        <div class="cost-row total-row">
+          <span class="c-name">✅ Ahorro neto anual</span>
+          <span class="c-val" id="cost-neto">—</span>
+        </div>
+
+        <div class="cost-note" id="cost-nota">
+          💡 Los costos de referencia se basan en análisis de propiedades en Latinoamérica.
+          Para una cotización exacta en tu moneda y región, solicita una demo gratuita.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+     CTA FINAL  (fondo oscuro — como el de munily.com)
+     ════════════════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="cta-content fade-up">
+      <h2>¿Listo para ver estos ahorros en tu conjunto?</h2>
+      <p>
+        Agenda una demo personalizada. Un experto de Munily analizará
+        tu caso específico sin costo ni compromiso.
+      </p>
+      <a href="https://munily.com/contactanos/" class="btn-cta" target="_blank" rel="noopener">
+        ¡Quiero obtener Munily! →
+      </a>
+      <div class="cta-trust">
+        Sin compromisos &nbsp;•&nbsp; Configuración en 3–6 semanas &nbsp;•&nbsp; +500 conjuntos en Latinoamérica
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+     FOOTER  (estilo munily.com)
+     ════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <img src="munily.png" alt="Munily" />
+        <p>
+          Software de administración de propiedades horizontales impulsado por IA.
+          Digitaliza la seguridad, contabilidad y comunicación de tu conjunto.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="https://munily.com/conocenos" target="_blank" rel="noopener">Conócenos</a>
+        <a href="https://munily.com/blog" target="_blank" rel="noopener">Blog</a>
+        <a href="https://munily.com/contacto" target="_blank" rel="noopener">Contáctanos</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="mailto:info@munily.com">info@munily.com</a>
+        <a href="mailto:soporte@munily.com">soporte@munily.com</a>
+        <a href="https://munily.com/ayuda" target="_blank" rel="noopener">Centro de ayuda</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom container">
+      <span>© 2025 Munily. Hecho con amor desde LATAM para el mundo.</span>
+      <div style="display:flex;gap:16px">
+        <a href="https://munily.com/terminos" target="_blank" rel="noopener">Términos y condiciones</a>
+        <a href="https://munily.com/privacidad" target="_blank" rel="noopener">Política de privacidad</a>
+      </div>
+    </div>
+
+    <div
+      style="background:#f7faff;border-top:1px solid #E0EAF6;padding:14px 5%;text-align:center;font-size:11px;color:#A7AAAD;line-height:1.6">
+      Los cálculos son estimaciones basadas en promedios del mercado de propiedad horizontal en Latinoamérica.
+      Los resultados reales pueden variar según las características específicas de cada conjunto.
+      Metodología: Análisis Munily de ahorro para propiedad horizontal — 2025.
+    </div>
+  </footer>
+
+
+  <!-- jsPDF cargado de forma diferida para no bloquear el render en móvil -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="calculadora.js" defer></script>
+</body>
+
+</html>
